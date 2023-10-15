@@ -1,0 +1,7 @@
+FROM golang:1.21
+
+WORKDIR /app
+COPY . .
+RUN go install ./02-ratelimiter/cmd/service/...
+
+ENTRYPOINT ["service"]

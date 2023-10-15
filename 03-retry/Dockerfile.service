@@ -1,0 +1,7 @@
+FROM golang:1.21
+
+WORKDIR /app
+COPY . .
+RUN go install ./03-retry/cmd/service/...
+
+ENTRYPOINT ["service"]

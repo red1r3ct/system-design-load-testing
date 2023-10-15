@@ -1,0 +1,21 @@
+phantom:
+  instances: 5000
+  address: service:8080
+  uris:
+    - /call
+  load_profile:
+    load_type: rps
+    schedule: step(25, 300, 25, 20)
+console:
+  enabled: true
+telegraf:
+  enabled: false
+autostop:
+  autostop:
+    - http(5xx,80%,5s)
+    - http(4xx,50%,5s)
+    - net(xx,80,5)
+overload:
+  enabled: true
+  package: yandextank.plugins.DataUploader
+  token_file: "/var/loadtest/token.txt"
